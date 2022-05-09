@@ -1,23 +1,19 @@
 import React from 'react'
 import { Dialog, DialogTitle } from '@mui/material'
 
-export function HomeElementDialog (props: any) {
-  const [open, setOpen] = React.useState(false)
+export interface HomeElementDialogProps {
+    title: string
+    active: boolean
+    path?: string
+    handleClose: () => void
+}
 
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  return (
+export function HomeElementDialog (props: HomeElementDialogProps) {
+    return (
         <div className="HomeElementModal">
-            <button onClick={handleClickOpen}>{props.dialogButtonLabel}</button>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Dialog</DialogTitle>
+            <Dialog open={props.active} onClose={props.handleClose}>
+                <DialogTitle>{props.title}</DialogTitle>
             </Dialog>
         </div>
-  )
+    )
 }
